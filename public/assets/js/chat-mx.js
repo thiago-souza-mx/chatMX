@@ -235,7 +235,7 @@ let buble = props=>{
         _(`#user_${props.session}:not(.ativo) .new-msg`).innerHTML= `<span>${n}</span>`
 
         if(props.origem == "me"){
-            _("title").innerText= `${n} nova mensagem`
+            _("title").innerText= `${n} 💬`
         }
     }else{
 		 if(props.origem == "me"){
@@ -280,15 +280,19 @@ let setUser = props=>{
 
 let notSessions = ()=>{
 	let sessions = document.querySelectorAll('.session');
-	if(sessions.length > 0)
+	if(sessions.length > 0){
 		_("#notListOnline").style.display = "none"
-	else
+		_("title").innerText= "👋 Clientes"
+	}else{
 		_("#notListOnline").style.display = "block"
+		 _("title").innerText= "☕"
+	}
 }
 
 let setSession = (id, nome)=>{
 	_('#chatMX').classList.remove('overframe')
 	_('#chatMX').classList.add('change')
+	_("title").innerText= "Suporte"
 	if(permit == 0){
 		som.x = 0
 		alertSound(som)
