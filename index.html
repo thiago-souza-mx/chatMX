@@ -288,9 +288,10 @@
 
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+<script src="https://websocket-chatmx.herokuapp.com/socket.io/socket.io.js"></script>
 <script>
-let socket = ''
+let socket
+
 let lido
 
 chatMX ={}
@@ -365,7 +366,7 @@ let sendPushMessage = props=> {
 
  let push = props=>{
 	
-	 //sendPushMessage(props)
+	 sendPushMessage(props)
 	 
  }
 
@@ -373,15 +374,13 @@ window.onload = ()=>{
 
 (async () => {
 
-const socket = io()
-
 let loadChat = ()=>{
 	
-
+	socket = io()
 
 	socket.on('chat msg', function(msg){		
 		const data = JSON.parse(msg);		
-		console.log(data)
+		//console.log(data)
 		if(data.origem == 'to')
 			disponivel = data.session
 		if( data.session == user_id ){
@@ -416,7 +415,7 @@ let loadChat = ()=>{
 					socket.emit('login', JSON.stringify(usuario));
 					_("#chatMX_msg").removeAttribute("disabled")
 					_(".msg-box").classList.remove("disabled")
-					console.log(data);
+					//console.log(data);
 					control = 0					
 				}
 			}else{
@@ -434,7 +433,7 @@ let loadChat = ()=>{
 	
 	socket.on('disconnect', function(msg){		
 		const data = JSON.parse(msg);		
-		console.log(data)		
+		//console.log(data)		
 	});
 	
 	socket.on('digiting', function(msg){		
@@ -456,7 +455,7 @@ let loadChat = ()=>{
 	
 	socket.on('close', function(msg){		
 		const data = JSON.parse(msg);		
-		console.log(data)		
+		//console.log(data)		
 	});	
 	
 	let interval = setInterval(()=>{_("#st_digit").style.display= "none";},1000);
@@ -523,10 +522,14 @@ let buble = props=>{
 		if(notify > 0){
 			setNotify()
 			notify++
-		}//else
-			//window.parent.bubleAlertSound(0.1,1)
-	}//else
-		//window.parent.bubleAlertSound(0.1,2)
+		}else{
+			if(window.location.search.indexOf("iframe")>-1)
+				window.parent.bubleAlertSound(0.1,1)
+		}
+	}else{
+		if(window.location.search.indexOf("iframe")>-1)
+			window.parent.bubleAlertSound(0.1,2)
+	}
 	let buble= create("div")
 	buble.setAttribute("class", "box-msg "+props.origem )
 	buble.innerHTML = html

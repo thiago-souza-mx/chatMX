@@ -294,3 +294,22 @@
     left: 20px;
 	display:none;
   }
+@media(max-width:800px){
+  #chatMX {
+    width: 100%;
+    transition:0.4s all;
+  }
+  #chatMX.overframe {
+     right:-120%;
+  }
+  #chatMX_content {
+    margin: -260px 0 -30px;
+  }
+  #chatMX_sidebar{
+    width: 100%;
+    padding:20px 0;
+  }
+  #chatMX_sidebar .session {
+    margin:10px;
+  }
+}

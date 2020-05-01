@@ -137,14 +137,14 @@ let loadChat = ()=>{
 	
 	socket.on('login', function(msg){		
 		const data = JSON.parse(msg);
-		console.log(data)
+		//console.log(data)
 		if(data.origem == "client")
             setUser(data)
 	});
 	
 	socket.on('disconnect', function(msg){		
 		const data = JSON.parse(msg);		
-		console.log(data)		
+		//console.log(data)		
 	});
 	
 	socket.on('digiting', function(msg){		
@@ -166,7 +166,7 @@ let loadChat = ()=>{
 	
 	socket.on('close', function(msg){		
 		const data = JSON.parse(msg);		
-		console.log(data)		
+		//console.log(data)		
 	});	
 
 	
@@ -185,13 +185,8 @@ let loadChat = ()=>{
 	chatMX.button.innerHTML = "<div class='baloom'>chat<b>MX</b></div>"
 
 	chatMX.body = create("div")
-	chatMX.body.id = "chatMX"
-	
-	if(window.location.search.indexOf("iframe")>-1)
-		chatMX.body.setAttribute("class","hide iframe")
-	else
-		//chatMX.body.setAttribute("class","hide")
-	
+	chatMX.body.id = "chatMX"	
+	chatMX.body.setAttribute("class","overframe")	
 	chatMX.wrapper = create("div")
 	chatMX.wrapper.id = "chatMX_wrapper"
 	
@@ -212,7 +207,7 @@ let loadChat = ()=>{
 	
 		
 	_('body').appendChild(chatMX.body)	
-	_('body').appendChild(chatMX.button)	
+	//_('body').appendChild(chatMX.button)	
 	_('body').appendChild(chatMX.sidebar)	
 	_('#chatMX').appendChild( chatMX.wrapper )
 	_('#chatMX_wrapper').appendChild( chatMX.header )
@@ -280,6 +275,8 @@ let setUser = props=>{
 }
 
 let setSession = (id, nome)=>{
+	_('#chatMX').classList.remove('overframe')
+	_('#chatMX').classList.add('change')
 	if(permit == 0){
 		som.x = 0
 		alertSound(som)
@@ -404,10 +401,10 @@ let loadFunctions = ()=>{
 		return jQuery(elem)
 	}
 	
-	_('#chatMX_button').addEventListener("click", ()=>{
+	/*_('#chatMX_button').addEventListener("click", ()=>{
 		j('#chatMX').show(400)
 		j('#chatMX_button').hide(400)
-	})
+	})*/
 
 	_("#chatMX_msg").addEventListener("keyup", e=>{
 		if(e.which != 13)
@@ -418,6 +415,14 @@ let loadFunctions = ()=>{
 		let msg = _("#chatMX_msg").value
 		sendMessage({msg:msg})
 		_("#chatMX_msg").value = ""
+	})
+	
+	_("#chatMX_header .titulo").addEventListener("click",()=>{
+		_('#chatMX').classList.add('overframe')
+		_('#chatMX').classList.remove('change')
+		if(_(".session.ativo"))
+			_(".session.ativo").classList.remove("ativo")
+		
 	})
 
 	document.addEventListener('keypress', function(e){
