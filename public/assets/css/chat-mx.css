@@ -294,6 +294,14 @@
     left: 20px;
 	display:none;
   }
+  #notListOnline{
+	color: #FFF;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial;
+    padding: 50px 0;
+	  
+  }
 @media(max-width:800px){
   #chatMX {
     width: 100%;
@@ -303,7 +311,7 @@
      right:-120%;
   }
   #chatMX_content {
-    margin: -260px 0 -30px;
+    margin: -295px 0 -30px;
   }
   #chatMX_sidebar{
     width: 100%;

@@ -175,6 +175,7 @@ let loadChat = ()=>{
     
     chatMX.sidebar = create("div")
     chatMX.sidebar.id = 'chatMX_sidebar'
+    chatMX.sidebar.innerHTML = '<div id="notListOnline">Ninguém na fila 😊<br> <h3>Tome um &#9749;!</h3> </div>'
     
 	chatMX.button = create("div")
 	chatMX.button.id = "chatMX_button"
@@ -255,7 +256,8 @@ let buble = props=>{
 
 let setUser = props=>{
     if(_(`#user_${props.id}`)){       
-         _(`#user_${props.id}`).remove()        
+         _(`#user_${props.id}`).remove()
+		 notSessions()
     }
     if(props.conexao == "on"){
 
@@ -272,7 +274,16 @@ let setUser = props=>{
         _('#chatMX_content').appendChild( chatMX.conversation )
         _('#chatMX_sidebar').appendChild(chatMX.user)
     }
-    statusSuporte();
+	notSessions()	
+    statusSuporte()
+}
+
+let notSessions = ()=>{
+	let sessions = document.querySelectorAll('.session');
+	if(sessions.length > 0)
+		_("#notListOnline").style.display = "none"
+	else
+		_("#notListOnline").style.display = "block"
 }
 
 let setSession = (id, nome)=>{
