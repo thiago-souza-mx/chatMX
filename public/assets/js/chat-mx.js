@@ -431,6 +431,7 @@ let loadFunctions = ()=>{
 		let msg = _("#chatMX_msg").value
 		sendMessage({msg:msg})
 		_("#chatMX_msg").value = ""
+		_("#chatMX_msg").focus()
 	})
 	
 	_("#chatMX_header .titulo").addEventListener("click",()=>{
