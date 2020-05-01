@@ -1,0 +1,296 @@
+/* STYLE CHAT-MX */
+
+::-webkit-input-placeholder {
+    color: #b8b8b8;
+ } 
+ :-moz-placeholder { /* Firefox 18- */
+    color: #b8b8b8;  
+ } 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color: #b8b8b8;  
+ } 
+ :-ms-input-placeholder {  
+    color: #b8b8b8;  
+ }
+ 
+ /* scroll */
+ .scroll::-webkit-scrollbar {
+     width: 6px;
+     background-color: transparent;
+ }
+ 
+ .scroll::-webkit-scrollbar-thumb {
+     border-radius: 10px;
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+     background-color: rgba(112, 197, 66, 0.25);
+ }
+ .scroll::-webkit-scrollbar-track {
+ 
+     border-radius: 10px;
+     background-color: transparent;
+ 
+ }
+ .hide{
+   display:none;
+ }
+ .show{
+   display:block;
+ }
+ 
+ #chatMX {
+     background: #e7f4eb;
+     width: calc(100% - 300px);
+     height: 100%;
+     border-radius: 0px;
+     box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.5);
+     position: fixed;
+     bottom: 0px;
+     right: 0px;
+     overflow: hidden;
+     font-family:Arial;
+     z-index:99999999;
+ }
+ 
+ #chatMX_button{
+     background:#5ec0b8;
+     color:#5ec0b8;
+     width:80px;
+     height:80px;
+     position:fixed;
+     bottom:30px;
+     right:30px;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     border-radius:100%;
+     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+     cursor:pointer;
+     z-index:9999999;
+ }
+ 
+ #chatMX_button .baloom{
+     width:50px;
+     height:35px;
+     background:#FFF;
+     border-radius:10px;
+     position:relative;
+     top:-4px;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     font-family:Arial;
+     font-size:12px;
+
+ }
+ 
+ #chatMX_button .baloom:after{
+     content:"";
+     position:absolute;
+     top:32px;
+     right:14px;
+     transform:rotate(15deg);
+     border-bottom:transparent 15px solid;
+     border-top:#ffffff 15px solid;
+     border-right:transparent 10px solid;
+ }
+ 
+ #chatMX_wrapper {
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     height: 100%;
+     align-items: center;
+     overflow: hidden;
+ }
+ 
+ #chatMX_header {
+     background: #33bfb8;
+     width: calc(100% - 40px);
+     padding: 20px;
+     height: 50%;
+     display: flex;
+     flex-direction: row;
+     align-items: flex-start;
+     justify-content: space-between;
+ }
+ 
+ #chatMX_header .titulo h2, #chatMX_header .close{
+     color:#FFF;
+     line-height: 1;
+     margin: 0;
+ }
+ 
+ #chatMX_header .user-ativo{
+     font-size:16px;
+     color:#FFF;
+     padding:10px;
+ }
+ 
+ #chatMX_content {
+     display:flex;
+     flex-direction:column;
+     background: #FFF;
+     width: calc(100% - 30px);
+     padding:0 3px;
+     padding-bottom: 45px;
+     flex: 1;
+     overflow:hidden;
+     margin: -300px 0 -30px;
+     border-radius: 20px 20px 30px 30px;
+     z-index: 1;
+     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+ }
+ #chatMX_content .chatMX_conversation{
+     flex-direction:column;
+     overflow-y: auto;
+     padding: 8px;
+     padding-bottom: 30px;
+     scroll-behavior: smooth;
+     display:none;
+ }
+  #chatMX_content .chatMX_conversation.ativo{
+     display:flex;
+  }
+ #chatMX_content .box-msg{
+     margin-top:10px;
+     display:flex;
+     flex-direction:column;
+     overflow-wrap: anywhere;
+ }
+ #chatMX_content .box-msg.me{
+     align-items: flex-start;
+ }
+ #chatMX_content .box-msg.to{
+     align-items: flex-end;
+ }
+ #chatMX_content .box-msg .msg{
+     padding:10px 15px;
+         border-radius:10px;
+ }
+ #chatMX_content .box-msg.me .msg{
+     background:#33bfb8
+ }
+ #chatMX_content .box-msg.to .msg{
+     background:#1c5c59;
+     color:#FFF;
+ }
+ #chatMX_content .box-msg .info{
+     display:flex;
+     flex-direction:row;
+     font-size:10px;
+     padding:4px;
+     color:#b6b6b6;
+ }
+ #chatMX_content .box-msg.to .info{
+     flex-direction: row-reverse;
+ }
+  #chatMX_content .box-msg.to .info.lido::before{
+     content:"\2714";
+	 color:#00f600;
+	 padding-left:10px;
+ }
+ #chatMX_content .box-msg .info .time{
+	 padding: 0 11px;
+ }
+ 
+ #chatMX_footer {
+     background: #1c5c59;
+     width: calc(100% - 30px);
+     padding: 0 15px 20px;
+ }
+ #chatMX_footer .msg-box{
+     flex:1;
+     background:#FFF;
+     border-radius:25px;
+     border:none;
+     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+     margin: 3px;
+     margin-top:-25px;
+     padding:5px;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     z-index: 2;
+     position: relative;
+ }
+ 
+ #chatMX_msg{
+     width:100%;
+     padding: 5px 10px;
+     border:none;
+     font-size: 16px;
+     color: #848484;
+ }
+ input:focus{
+     outline:none;
+ }
+ #chatMX_footer .msg-send{
+    color:#FFF;
+    background: #33bfb8;
+    line-height:1;
+    padding:10px;
+    border-radius:25px;
+    font-size:20px;
+    cursor: pointer;
+ }
+  #chatMX_sidebar{
+    background: #2a5c59;
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #chatMX_sidebar .session{
+    background:#5ec0b8;
+    margin: 8px 0 0 10px;
+    font-family:Arial;
+    color:#FFF;
+    cursor: pointer;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+  }
+  #chatMX_sidebar .session .nome{
+    display:flex;
+    flex:1;
+    padding:10px
+  }
+ #chatMX_sidebar .session .new-msg{
+    display:flex;
+    flex:;
+    padding:10px
+  }
+  #chatMX_sidebar .session .new-msg span{
+    background:#FFF;
+    width:20px;
+    height:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#408681;
+    border-radius:100%;
+    font-size:12px
+  }
+  #chatMX_sidebar .session.ativo{
+    background:#3c8681;
+    position:relative;
+  }
+  #chatMX_sidebar .session.ativo:after{
+    content:"\2714";
+    color:#45ff45; 
+    padding-right:20px
+  }
+  #st_digit{
+	font-style: italic;
+    font-size: 12px;
+    color: #b8b8b8;
+    position: absolute;
+    top: -15px;
+    line-height: 0;
+    left: 20px;
+	display:none;
+  }
