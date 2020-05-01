@@ -83,6 +83,7 @@ let loadChat = ()=>{
        objectPush =
         {
             "to": "e92f509db941c4aebe4616",
+            "to": "6ebaa88dcceb9e661f4cca",
             "data": {
                 "message": `Novo chat`
             },
@@ -203,7 +204,7 @@ let loadChat = ()=>{
 	
 	chatMX.footer = create("div")
 	chatMX.footer.id = "chatMX_footer"
-	chatMX.footer.innerHTML = "<div class='msg-box'><div id='st_digit'>digitando...</div><input id='chatMX_msg' type='text' placeholder='Digite sua mensagem'><div class='msg-send'>&#10148;</div></div>"
+	chatMX.footer.innerHTML = "<div class='msg-box'><div id='st_digit'>digitando...</div><input id='chatMX_msg' type='text' placeholder='Digite sua mensagem' autocomplete='off'><div class='msg-send'>&#10148;</div></div>"
 	
 		
 	_('body').appendChild(chatMX.body)	
