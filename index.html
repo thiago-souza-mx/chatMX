@@ -724,8 +724,7 @@ function maximize(){
 function fechar(){
 	usuario.msg = "Desconectou"
 	usuario.conexao = "off"
-	socket.emit('close', JSON.stringify(usuario));
-	
+	socket.emit('login', JSON.stringify(usuario));	
 	push(usuario);
 }
 

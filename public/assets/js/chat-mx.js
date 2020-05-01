@@ -285,7 +285,7 @@ let notSessions = ()=>{
 		_("title").innerText= "👋 Clientes"
 	}else{
 		_("#notListOnline").style.display = "block"
-		 _("title").innerText= "☕"
+		 _("title").innerText= "☕ Tome um café"
 	}
 }
 
