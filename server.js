@@ -54,6 +54,10 @@ serverSocket.on('connect', function(socket){
 	socket.on('close', function(msg){
         serverSocket.emit('close', msg)
     })
+
+	socket.on('ping', function(){
+        serverSocket.emit('ping')
+    })
 	
 
 })

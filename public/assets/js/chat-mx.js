@@ -1,3 +1,15 @@
+/*##########################################################
+    Script de criação do Painel Admin do suporte 
+	Gestão sonora de alertas de usuários e sessões
+	Organização de atendimento e Alertas
+
+	
+    Este contéudo faz parte do app de Suporte "CHAT-MX"
+    Desenvolvido por Thiago Souza
+    Propriedade de Designer MX 
+
+###########################################################*/
+
 // chat-mx.js
 
 chatMX ={}
@@ -170,8 +182,14 @@ let loadChat = ()=>{
 		//console.log(data)		
 	});	
 
+	socket.on('ping', function(){		
+		console.log(socket)		
+	});	
+
 	
-    let interval = setInterval(()=>{_("#st_digit").style.display= "none";},1000);
+	let interval = setInterval(()=>{_("#st_digit").style.display= "none";},1000);
+	
+	let ping = setInterval(()=>{socket.emit('ping')},1000*60*5);
     
     chatMX.sidebar = create("div")
     chatMX.sidebar.id = 'chatMX_sidebar'

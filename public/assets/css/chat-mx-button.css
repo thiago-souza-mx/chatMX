@@ -1,0 +1,121 @@
+/*##########################################################
+    Script de criação do botão para chat 
+    Gestão sonora de alertas e integração com outros sites
+
+    Este contéudo faz parte do app de Suporte "CHAT-MX"
+    Desenvolvido por Thiago Souza
+    Propriedade de Designer MX 
+
+###########################################################*/
+
+#chat-mx-body{
+	position:fixed;
+	bottom: 30px;
+	right: 30px;
+	border: none;
+	width: 100%;
+	max-width: 350px;
+	height: 80%;
+	border-radius: 20px;
+	box-shadow:2px 3px 20px rgba(0,0,0,0.5);
+	z-index:999999;
+}
+#chat-mx-body .content{
+	border: none;
+	width: 100%;
+	height: 100%;
+	border-radius: 30px;
+}
+#chatmx{	
+	border: none;
+	width: 100%;	
+	height: 100%;
+	border-radius: 20px;
+}
+ #chatMX_button{
+     background:#5ec0b8;
+     color:#5ec0b8;
+     width:80px;
+     height:80px;
+     position:fixed;
+     bottom:30px;
+     right:30px;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     border-radius:100%;
+     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+     cursor:pointer;
+     z-index:9999999;
+ }
+
+  
+ #chatMX_button .baloom{
+     width:50px;
+     height:35px;
+     background:#FFF;
+     border-radius:10px;
+     position:relative;
+     top:-4px;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     font-family:Arial;
+     font-size:12px;
+
+ }
+ 
+ #chatMX_button .baloom:after{
+     content:"";
+     position:absolute;
+     top:32px;
+     right:14px;
+     transform:rotate(15deg);
+     border-bottom:transparent 15px solid;
+     border-top:#ffffff 15px solid;
+     border-right:transparent 10px solid;
+ }
+ 
+#chat-mx-body .close {
+    color: #FFF;
+    line-height: 1;
+    margin: 0;
+    font-size: 26px;
+    cursor: pointer;
+    position: absolute;
+    opacity: 1;
+    right: 15px;
+    top: 15px;
+ 	z-index:999999;
+}
+
+#chat-mx-body .minimize {
+    color: #FFF;
+    line-height: 1;
+    margin: 0;
+    font-size: 26px;
+    cursor: pointer;
+    position: absolute;
+    opacity: 1;
+    right: 50px;
+    top: 7px;
+ 	z-index:999999;
+}
+#notify{
+	position: absolute;
+	top: 0;
+    left: 0;
+	display:none;
+}
+#notify span{
+	background: red;
+    color: #FFF;
+    line-height: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+	
