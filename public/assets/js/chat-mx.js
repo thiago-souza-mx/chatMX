@@ -156,8 +156,8 @@ let loadChat = ()=>{
 	});
 	
 	socket.on('disconnect', function(msg){		
-		const data = JSON.parse(msg);		
-		//console.log(data)		
+		//const data = JSON.parse(msg);		
+		console.log(msg)		
 	});
 	
 	socket.on('digiting', function(msg){		
