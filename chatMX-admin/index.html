@@ -1,18 +1,43 @@
 <html lang="pt-br">
-<head>
-<title>Suporte</title>
-<meta charset="utf-8">
-<meta name="theme-color" content="#33bfb8">
-<meta name="theme-color" content="#33bfb8">
-<meta name="theme-color" content="#33bfb8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/images/favicon.png" sizes="192x192">
-<link href="/assets/css/chat-mx.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/assets/js/chat-mx.js"></script>
-</head>
-<body>
+  <head>
+    <title>Suporte</title>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#33bfb8">
+    <meta name="theme-color" content="#33bfb8">
+    <meta name="theme-color" content="#33bfb8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/images/favicon.png" sizes="192x192">
+    <link href="/assets/css/chat-mx.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/assets/js/chat-mx.js"></script>  
+    <script src="https://sdk.pushy.me/web/1.0.5/pushy-sdk.js"></script>
+    <script>
+      // Register device for push notifications
+      Pushy.register({ appId: '5ea27cbbcfaed1b24514a9ea' }).then(function (deviceToken) {
+          // Print device token to console
+          //document.querySelector('#push').innerHTML = '<center><h3>'+deviceToken+'</h3></center>'
+          console.log(deviceToken);
 
-</body>
+          // Send the token to your backend server via an HTTP GET request
+          //fetch('https://your.api.hostname/register/device?token=' + deviceToken);
+
+          // Succeeded, optionally do something to alert the user
+      }).catch(function (err) {
+          // Handle registration errors
+          console.error(err);
+      });
+
+      // Check if the device is registered
+      if (Pushy.isRegistered()) {
+          // Subscribe the device to a topic
+          Pushy.subscribe('news').catch(function (err) {
+              // Handle subscription errors
+              console.error('Subscribe failed:', err);
+          });
+      }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
