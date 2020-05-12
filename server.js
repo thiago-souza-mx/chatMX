@@ -34,6 +34,8 @@ app.get('/push', function (req, res) {
 })
 
 app.get('/push/:id', function (req, res) {
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE")
     var id = req.params.id
 
     fs.readFile(__dirname + '/api/push.json','utf8', function(err,data){
