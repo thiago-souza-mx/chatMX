@@ -80,7 +80,7 @@ const state = {
 
 let iframeChat = props=>{
 	
-	const host = `${window.location.protocol}//${window.location.host}`
+	const host = props.host ?`${window.location.protocol}//${window.location.host}`: props.host
 	
     ifr = {}
 
