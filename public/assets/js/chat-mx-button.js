@@ -93,11 +93,11 @@ let iframeChat = props=>{
     ifr.css = iframeDoc.createElement("link")
     ifr.css.type = "text/css";
     ifr.css.setAttribute("rel","stylesheet")
-    ifr.css.href = "/assets/css/chat-mx-user.css";
+    ifr.css.href = `${host}/assets/css/chat-mx-user.css`;
 
     ifr.js = iframeDoc.createElement("script");
     ifr.js.type = "text/javascript";
-    ifr.js.src = "/assets/js/chat-mx-user.js"
+    ifr.js.src = `${host}/assets/js/chat-mx-user.js`
 
     ifr.io = iframeDoc.createElement("script");
     ifr.io.type = "text/javascript";
