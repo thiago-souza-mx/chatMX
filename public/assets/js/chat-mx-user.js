@@ -44,7 +44,7 @@ let loadJquey = ()=>{
 let sendPushMessage = props=> {
 	objectPush =
 	 {
-		 "to": "e92f509db941c4aebe4616",
+		 "to": `${props.token}`,
 		 "data": {
 			 "message": `${props.nome} ${props.msg}`
 		 },
@@ -82,8 +82,11 @@ let sendPushMessage = props=> {
  let push = props=>{
 	 
 	fetch('/push').then(res=>res.json()).then(res =>{
-		props.token = res
-		sendPushMessage(props)
+		for(let i=0; i<res.length; i++){
+			props.token = res[i]
+			sendPushMessage(props)
+		}
+	
 	});
 	 
  }
