@@ -81,7 +81,7 @@ let sendPushMessage = props=> {
 
  let push = props=>{
 	 
-	fetch(`${chatUser.host}/pus`).then(res=>res.json()).then(res =>{
+	fetch(`${chatUser.host}/push`).then(res=>res.json()).then(res =>{
 		for(let i=0; i<res.length; i++){
 			props.token = res[i].token
 			sendPushMessage(props)
