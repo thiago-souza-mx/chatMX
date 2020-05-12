@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 app.use(express.static("public"))
 app.use(bodyParser.json())
+app.use(cors())
 
 const http = require('http').Server(app)
 const serverSocket = require('socket.io')(http)
@@ -21,6 +23,8 @@ http.listen(porta, function(){
     else console.log('Servidor iniciado. Abra o navegador em ' + host + portaStr)
 })
 
+app.options('*', cors())
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html')
 })
@@ -29,11 +33,11 @@ app.get('/admin', function (req, res) {
     res.sendFile(__dirname + '/chatMX-admin/index.html')
 })
 
-app.get('/push', function (req, res) {
+app.get('/push',cors(), function (req, res) {
     res.sendFile(__dirname + '/api/push.json') 
 })
 
-app.get('/push/:id', function (req, res) {
+app.get('/push/:id',cors(), function (req, res) {
     var id = req.params.id
 
     fs.readFile(__dirname + '/api/push.json','utf8', function(err,data){
@@ -73,7 +77,7 @@ app.post('/push/register', function (req, res) {
         }
         res.json(text)
                     
-        })
+    })
     
 })
 
