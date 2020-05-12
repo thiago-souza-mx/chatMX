@@ -52,6 +52,7 @@ app.post('/push/register', function (req, res) {
     fs.readFile(__dirname + '/api/push.json','utf8', function(err,data){
         var text 
         var check = false 
+       
         if(data){
             text = JSON.parse(data)      
 
@@ -65,13 +66,15 @@ app.post('/push/register', function (req, res) {
                 text.push(req.body)
                 fs.writeFileSync(__dirname + '/api/push.json', JSON.stringify(text))
             }
-        } else
+        } else{
             text = []
             text.push(req.body)
             fs.writeFileSync(__dirname + '/api/push.json', JSON.stringify(text))
+        }
+        res.json(text)
                     
         })
-    res.json(text)
+    
 })
 
 
