@@ -1,30 +1,37 @@
 /*##########################################################
-    Script de criação do botão para chat 
-    Gestão sonora de alertas e integração com outros sites
-
+    Script de customização do botão de open-chat 
+  
     Este contéudo faz parte do app de Suporte "CHAT-MX"
     Desenvolvido por Thiago Souza
     Propriedade de Designer MX 
 
 ###########################################################*/
 
+iframe#fake{
+	border:none;
+	border-radius:20px;
+	width: 100%;
+	height: 100%;
+}
+
 #chat-mx-body{
 	position:fixed;
+	display: flex;
 	bottom: 30px;
-	right: 30px;
-	border: none;
-	width: 100%;
-	max-width: 350px;
-	height: 80%;
 	border-radius: 20px;
 	box-shadow:2px 3px 20px rgba(0,0,0,0.5);
 	z-index:999999;
 }
 #chat-mx-body .content{
-	border: none;
-	width: 100%;
-	height: 100%;
-	border-radius: 30px;
+	display: flex;
+    flex: 1;
+}
+#chat-mx-body.left, #chatMX_button.left{
+    left:30px;
+}
+
+#chat-mx-body.right, #chatMX_button.right {
+    right:30px;
 }
 #chatmx{	
 	border: none;
@@ -39,7 +46,6 @@
      height:80px;
      position:fixed;
      bottom:30px;
-     right:30px;
      display:flex;
      align-items:center;
      justify-content:center;
@@ -117,5 +123,6 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    font-family:Arial;
 }
 	

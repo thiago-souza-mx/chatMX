@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Chat-MX</title>
 </head>
 <body>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
 	<script src="/assets/js/chat-mx-button.js"></script>
 	<script>
 		// Inicialização do chat
 		chatMX({
-				nome:"Thiago Souza",
-				email:"",
-				idUser:new Date().getTime(),
-				styleSheet:"/assets/css/chat-mx-button.css"
-			})
+			host:"",
+            nome:"Thiago Souza",
+            email:"",
+            idUser:new Date().getTime(),
+            styleSheet:"/assets/css/chat-mx-button.css",
+            width: 350,
+            height: 600,            
+        }) 
 	</script>
 </body>
 </html>

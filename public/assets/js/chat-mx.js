@@ -94,7 +94,7 @@ let loadChat = ()=>{
     let sendPushMessage = props=> {
        objectPush =
         {
-            "to": "e92f509db941c4aebe4616",
+            
             "to": "6ebaa88dcceb9e661f4cca",
             "data": {
                 "message": `Novo chat`

@@ -18,6 +18,19 @@ let j = elem =>{
 	return jQuery(elem)
 }
 
+let valid = elem=>{
+    //console.log(typeof elem === "undefined")
+    return typeof elem !== "undefined"
+}
+
+
+let loadJquey = ()=>{
+	let jquery = create('script')
+	jquery.type = 'text/javascript'
+	jquery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'
+	_('head').appendChild(jquery)
+}
+
 /*--- Sound Alert Creator ---*/
 const to =16.6,	me = 10.7,
 	  min = 1920.6, 
@@ -60,19 +73,66 @@ let alertSound = props=>{
 /*--- END Sound Alert Creator ---*/
 
 
+/*--- IFRAME FAKE ---*/
+const state = {
+    position: "right"
+}
+
+let iframeChat = props=>{
+	
+	const host = `${window.location.protocol}//${window.location.host}`
+	
+    ifr = {}
+
+    let iframe = document.createElement("iframe")
+    iframe.id = "fake"
+    _('#chat-mx-body .content').appendChild(iframe)
+
+    iframeDoc = _('iframe#fake').contentDocument
+
+    ifr.css = iframeDoc.createElement("link")
+    ifr.css.type = "text/css";
+    ifr.css.setAttribute("rel","stylesheet")
+    ifr.css.href = "/assets/css/chat-mx-user.css";
+
+    ifr.js = iframeDoc.createElement("script");
+    ifr.js.type = "text/javascript";
+    ifr.js.src = "/assets/js/chat-mx-user.js"
+
+    ifr.io = iframeDoc.createElement("script");
+    ifr.io.type = "text/javascript";
+    ifr.io.src =`${host}socket.io/socket.io.js`;
+
+    ifr.user = iframeDoc.createElement("script");
+    ifr.user.type = "text/javascript";
+    ifr.user.innerHTML = `const chatUser={host:"${host}",nome:"${props.nome}",email:"${props.email}",id:"${props.idUser}"}`;
+
+    iframeDoc.head.appendChild(ifr.css)
+    iframeDoc.head.appendChild(ifr.user)
+    iframeDoc.body.appendChild(ifr.io)
+    iframeDoc.body.appendChild(ifr.js)
+  
+
+}
+
+
+/*--- END IFRAME FAKE ---*/
+
+
 const chatMX = props=>{
 
-	start = {}
+    loadJquey()    
+    start = {}
 	
 	let HTML = ""
 	
-	HTML += `<div id="chat-mx-body" style="display:none">`
+	HTML += `<div id="chat-mx-body" style="display:none; width:`+props.width+`px;height:`+props.height+`px;" class="`+(valid(props.position) ? props.position: state.position)+`">`
 	HTML += `	<div class="minimize">&#128469;</div>`
 	HTML += `	<div class="close">&#10005;</div>`
 	HTML += `	<div class="content">`
 	HTML += `	</div>`
 	HTML += `</div>`
-	HTML += `<div id="chatMX_button"><div class='baloom'>chat<b>MX</b></div><div id="notify"><span></span></div></div>`
+	HTML += `<div id="chatMX_button" class="`+(valid(props.position) ? props.position: state.position)+`"><div class='baloom'>chat<b>MX</b></div><div id="notify"><span></span></div></div>`
 	
 	start.css = create('link')
 	start.css.id = "chat-mx-style"
@@ -81,8 +141,8 @@ const chatMX = props=>{
 	start.css.rel = "stylesheet"
 	
 	start.chat = create('div');
-	start.chat.id = "chat-mx"
-	start.chat.innerHTML = HTML
+    start.chat.id = "chat-mx"
+   	start.chat.innerHTML = HTML
 	
 	_("head").appendChild(start.css);
 	_("body").appendChild(start.chat);
@@ -90,10 +150,10 @@ const chatMX = props=>{
 	var startChat = 0
 	_('#chatMX_button').addEventListener("click", ()=>{
 		if(startChat == 0){
-			startChat = 1			
-			_('#chat-mx-body .content').innerHTML = `<iframe id="chatmx" src="chat.html?iframe&nome=${props.nome}&email=${props.email}&id=${props.idUser}&${new Date().getTime()}"></iframe>`
+            startChat = 1
+            iframeChat(props)			
 		}else{
-			document.getElementById('chatmx').contentWindow.maximize();
+			document.getElementById('fake').contentWindow.maximize();
 		}	
 		
 		if(permit == 0){
@@ -107,28 +167,29 @@ const chatMX = props=>{
 	})
 
 	_('#chat-mx-body .minimize').addEventListener("click", ()=>{
-		document.getElementById('chatmx').contentWindow.minimize();
+		document.getElementById('fake').contentWindow.minimize();
 		j('#chat-mx-body').hide(400)
 		j('#chatMX_button').show(400)
 	})
 
 	_('#chat-mx-body .close').addEventListener("click", ()=>{
 		startChat = 0
-		document.getElementById('chatmx').contentWindow.fechar()
+		document.getElementById('fake').contentWindow.fechar()
 		
 		j('#chat-mx-body').hide(400)
 		j('#chatMX_button').show(400)
 		setTimeout(()=>{
 			_('#chat-mx-body .content').innerHTML = ''
 		},500)
-	})
+    })
+    
 	
 }
 
 function deactivateNotify(){
 	j('#notify span').text('')
 	j('#notify').hide(600)
-	document.getElementById('chatmx').contentWindow.setLido()
+	document.getElementById('fake').contentWindow.setLido()
 }
 
 function activateNotify(num){

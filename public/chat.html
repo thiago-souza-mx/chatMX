@@ -367,7 +367,10 @@ let sendPushMessage = props=> {
 
  let push = props=>{
 	
-	 sendPushMessage(props)
+	fetch('/push').then(res=>res.json()).then(res =>{
+		props.token = res
+		sendPushMessage(props)
+	});
 	 
  }
 

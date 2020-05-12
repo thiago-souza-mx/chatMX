@@ -17,10 +17,18 @@
       Pushy.register({ appId: '5ea27cbbcfaed1b24514a9ea' }).then(function (deviceToken) {
           // Print device token to console
           //document.querySelector('#push').innerHTML = '<center><h3>'+deviceToken+'</h3></center>'
-          console.log(deviceToken);
+          //console.log(deviceToken);
 
           // Send the token to your backend server via an HTTP GET request
-          //fetch('https://your.api.hostname/register/device?token=' + deviceToken);
+          //fetch('/push/register/device?token=' + deviceToken);
+          fetch('/push/register', {
+            method: 'post',
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({token: deviceToken})
+          }).then(res=>res.json()).then(res => console.log(res));
 
           // Succeeded, optionally do something to alert the user
       }).catch(function (err) {
