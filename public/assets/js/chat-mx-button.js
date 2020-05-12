@@ -101,7 +101,7 @@ let iframeChat = props=>{
 
     ifr.io = iframeDoc.createElement("script");
     ifr.io.type = "text/javascript";
-    ifr.io.src =`${host}socket.io/socket.io.js`;
+    ifr.io.src =`${host}/socket.io/socket.io.js`;
 
     ifr.user = iframeDoc.createElement("script");
     ifr.user.type = "text/javascript";
