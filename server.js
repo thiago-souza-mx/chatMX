@@ -52,23 +52,26 @@ app.post('/push/register', function (req, res) {
     fs.readFile(__dirname + '/api/push.json','utf8', function(err,data){
         var text 
         var check = false 
-        if(data)
-            text = JSON.parse(data)
-        else
-            text = []
+        if(data){
+            text = JSON.parse(data)      
 
-        for(var i=0; i<text.length; i++) {
-            if(text[i].token === req.body.token ) {
-                check = true
-                break
+            for(var i=0; i<text.length; i++) {
+                if(text[i].token === req.body.token ) {
+                    check = true
+                    break
+                }
             }
-        }
-        if(!check){
+            if(!check){
+                text.push(req.body)
+                fs.writeFileSync(__dirname + '/api/push.json', JSON.stringify(text))
+            }
+        } else
+            text = []
             text.push(req.body)
             fs.writeFileSync(__dirname + '/api/push.json', JSON.stringify(text))
-        }
-        res.json(text)		
-	})
+                    
+        })
+    res.json(text)
 })
 
 
