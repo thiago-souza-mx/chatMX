@@ -180,7 +180,7 @@ let loadIO =()=>{
 			if(data.nome == "SUPORTE" && data.conexao == "on"){		
 				
 				if(control == -1){
-					_("#suporte > b").innerHTML="<span style='color:green'>On-Line</span>"
+					_("#suporte > b").innerHTML="<span style='color:#5bff5b'>On-Line</span>"
 					usuario.msg = "está online"
 					usuario.conexao = "on"			
 					socket.emit('login', JSON.stringify(usuario));
