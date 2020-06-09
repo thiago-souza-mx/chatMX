@@ -127,6 +127,8 @@
      
      #chatMX_header {
          background: #33bfb8;
+         background-image: url(/images/icq_pttrn3.png);
+         background-size: contain;
          width: calc(100% - 40px);
          padding: 20px;
          height: 220px;
@@ -259,6 +261,7 @@
      #suporte{
         font-size: 12px;
         padding: 10px 0;
+        color: #FFF;
     }
     #chatMX_alert{
         position: absolute;
