@@ -105,6 +105,8 @@
  
  #chatMX_header {
      background: #33bfb8;
+     background-image: url('/images/icq_pttrn3.png');
+     background-size: contain;
      width: calc(100% - 40px);
      padding: 20px;
      height: 50%;
@@ -249,7 +251,7 @@
     cursor: pointer;
  }
   #chatMX_sidebar{
-    background: #2a5c59;
+    background: #22413f;
     width: 300px;
     height: 100%;
     position: absolute;
