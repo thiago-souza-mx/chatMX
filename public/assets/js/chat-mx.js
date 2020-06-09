@@ -74,9 +74,7 @@ let GetQueryString = (a)=>{
 
     if (typeof a === "string")
         a = a.split("#").join("&").split("&")
-
     if (!a) return {}
-
     let b = {}
     for ( i = 0; i < a.length; ++i)
     {
@@ -93,8 +91,7 @@ let loadChat = ()=>{
 
     let sendPushMessage = props=> {
        objectPush =
-        {
-            
+        {            
             "to": "6ebaa88dcceb9e661f4cca",
             "data": {
                 "message": `Novo chat`
@@ -104,12 +101,9 @@ let loadChat = ()=>{
                 "badge": 1,
                 "sound": "ping.aiff"
             }
-        }
-        
-        
+        }       
 
         var url = "https://api.pushy.me/push?api_key=40da300b73449699a228848976a3568305255b1bf183d868b7242c0bef2df959";
-
       
         var json = JSON.stringify(objectPush);
 
@@ -125,22 +119,17 @@ let loadChat = ()=>{
                     //console.error(users);
                 }
             }
-            xhr.send(json);
-           
-        
+            xhr.send(json);       
       }
 
-    let push = props=>{
-       
-        //sendPushMessage(props)
-        
+    let push = props=>{      
+        //sendPushMessage(props)        
     }
 
 // Ao receber mensagens do servidor
 	socket.addEventListener('open', function (event) {
 		//console.log(event)
 	})
-
 	
 	socket.on('chat msg', function(msg){		
 		const data = JSON.parse(msg);		
@@ -288,8 +277,9 @@ let setUser = props=>{
         chatMX.conversation = create("div")
 	    chatMX.conversation.id = `chatMX_conversation_${props.id}`
         chatMX.conversation.setAttribute("class","chatMX_conversation scroll")
-
-        _('#chatMX_content').appendChild( chatMX.conversation )
+		if(!_(`#chatMX_conversation_${id}`)){
+       		_('#chatMX_content').appendChild( chatMX.conversation )
+		}
         _('#chatMX_sidebar').appendChild(chatMX.user)
     }
 	notSessions()	
