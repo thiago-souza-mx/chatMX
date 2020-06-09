@@ -277,7 +277,7 @@ let setUser = props=>{
         chatMX.conversation = create("div")
 	    chatMX.conversation.id = `chatMX_conversation_${props.id}`
         chatMX.conversation.setAttribute("class","chatMX_conversation scroll")
-		if(!_(`#chatMX_conversation_${id}`)){
+		if(!_(`#chatMX_conversation_${props.id}`)){
        		_('#chatMX_content').appendChild( chatMX.conversation )
 		}
         _('#chatMX_sidebar').appendChild(chatMX.user)
