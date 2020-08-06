@@ -440,10 +440,11 @@ function handleVisibilityChange() {
     	chatMX.handle = false;
   	} else {
     	chatMX.handle = true;
-		lido();
+		socket.emit('read', JSON.stringify({session:session_id,lido:true}));
+		console.log(chatMX.handle);
   	}
 	
-	console.log(chatMX.handle);
+	
 }
 
 document.addEventListener(visibilityChange, handleVisibilityChange, false);
