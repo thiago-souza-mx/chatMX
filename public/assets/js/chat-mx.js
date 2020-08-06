@@ -13,7 +13,7 @@
 // chat-mx.js
 
 chatMX ={}
-chatMX.hadle = true;
+chatMX.handle = true;
 
 // Configura o nome da propriedade hidden e o evento de mudança para visibilidade
 var hidden, visibilityChange; 
@@ -437,9 +437,9 @@ let loop = ()=>{
 
 function handleVisibilityChange() {
   	if (document[hidden]) {
-    	chatMX.hadle = false;
+    	chatMX.handle = false;
   	} else {
-    	chatMX.hadle = true;
+    	chatMX.handle = true;
 		lido();
   	}
 	
