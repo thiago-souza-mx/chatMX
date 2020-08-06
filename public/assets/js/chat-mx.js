@@ -146,7 +146,7 @@ let loadChat = ()=>{
 	
 	socket.on('disconnect', function(msg){		
 		//const data = JSON.parse(msg);		
-		console.log(msg)		
+		console.log(msg);		
 	});
 	
 	socket.on('digiting', function(msg){		
@@ -156,9 +156,10 @@ let loadChat = ()=>{
 	});	
 	
 	socket.on('read', function(msg){		
-		const data = JSON.parse(msg);		
+		const data = JSON.parse(msg);
+		cosnt conversa = ` #chatMX_conversation_${+data.id}`;
 		if(data.id == session_id){
-			let enviado = document.querySelectorAll('.info.enviado')
+			let enviado = document.querySelectorAll(`${conversa} .info.enviado`);
 			for(i=0; i<enviado.length; i++){
 				enviado[i].classList.add('lido');
 				enviado[i].classList.remove('enviado');				
