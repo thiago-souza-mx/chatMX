@@ -84,6 +84,7 @@ iframe#fake{
  
 #chat-mx-body .close {
     color: #FFF;
+	display:none;
     line-height: 1;
     margin: 0;
     font-size: 26px;
