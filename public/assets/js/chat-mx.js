@@ -30,11 +30,6 @@ if (typeof document.hidden !== "undefined") { // Suporte para Opera 12.10 e Fire
 	hidden = "webkitHidden";
 	visibilityChange = "webkitvisibilitychange";
 } 
-
-// Se a página está escondida, não notifica visualização
-// Se a página está visível, não notifica visualização
-document.addEventListener(visibilityChange, handleVisibilityChange, false);
-
 var session_id = -1
 let create = elem =>{
 	return document.createElement(elem)
@@ -180,8 +175,8 @@ let loadChat = ()=>{
 		const data = JSON.parse(msg);
 		let conversa = `#chatMX_conversation_${+data.id}`;
 		let enviado = document.querySelectorAll(`${conversa} .info.enviado`);
-		console.log(enviado);
-		console.log(conversa);
+		//console.log(enviado);
+		//console.log(conversa);
 		enviado.forEach(item=>{
 			item.classList.add('lido');
 			item.classList.remove('enviado');				
@@ -447,8 +442,11 @@ function handleVisibilityChange() {
     	chatMX.hadle = true;
 		lido();
   	}
+	
+	console.log(chatMx.handle);
 }
 
+document.addEventListener(visibilityChange, handleVisibilityChange, false);
 //################################################################################
 //		FUNCTIONS UX
 //################################################################################
