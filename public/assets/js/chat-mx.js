@@ -157,7 +157,7 @@ let loadChat = ()=>{
 	
 	socket.on('read', function(msg){		
 		const data = JSON.parse(msg);
-		cosnt conversa = ` #chatMX_conversation_${+data.id}`;
+		const conversa = ` #chatMX_conversation_${+data.id}`;
 		if(data.id == session_id){
 			let enviado = document.querySelectorAll(`${conversa} .info.enviado`);
 			for(i=0; i<enviado.length; i++){
