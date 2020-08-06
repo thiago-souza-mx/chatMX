@@ -157,13 +157,14 @@ let loadChat = ()=>{
 	
 	socket.on('read', function(msg){		
 		const data = JSON.parse(msg);
-		const conversa = ` #chatMX_conversation_${+data.id}`;
+		
 		if(data.id == session_id){
+			let conversa = `#chatMX_conversation_${+data.id}`;
 			let enviado = document.querySelectorAll(`${conversa} .info.enviado`);
-			for(i=0; i<enviado.length; i++){
-				enviado[i].classList.add('lido');
-				enviado[i].classList.remove('enviado');				
-			}
+			enviado.forEach(item=>{
+				item.classList.add('lido');
+				item.classList.remove('enviado');				
+			})
 		}
 	});		
 	
