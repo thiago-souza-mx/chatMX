@@ -158,7 +158,7 @@ let loadChat = ()=>{
 	socket.on('read', function(msg){		
 		const data = JSON.parse(msg);
 		
-		if(data.id == session_id){
+		//if(data.id == session_id){
 			let conversa = `#chatMX_conversation_${+data.id}`;
 			let enviado = document.querySelectorAll(`${conversa} .info.enviado`);
 			console.log(enviado);
@@ -167,7 +167,7 @@ let loadChat = ()=>{
 				item.classList.add('lido');
 				item.classList.remove('enviado');				
 			})
-		}
+		//}
 	});		
 	
 	socket.on('close', function(msg){		
