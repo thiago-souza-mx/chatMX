@@ -33,13 +33,6 @@ if (typeof document.hidden !== "undefined") { // Suporte para Opera 12.10 e Fire
 
 // Se a página está escondida, não notifica visualização
 // Se a página está visível, não notifica visualização
-function handleVisibilityChange() {
-  	if (document[hidden]) {
-    	chatMX.hadle = false;
-  	} else {
-    	chatMX.hadle = true;
-  	}
-}
 document.addEventListener(visibilityChange, handleVisibilityChange, false);
 
 var session_id = -1
@@ -445,6 +438,15 @@ let loop = ()=>{
         socket.emit('login', JSON.stringify(usuario));
         loop();	
     },30000) 
+}
+
+function handleVisibilityChange() {
+  	if (document[hidden]) {
+    	chatMX.hadle = false;
+  	} else {
+    	chatMX.hadle = true;
+		lido();
+  	}
 }
 
 //################################################################################
