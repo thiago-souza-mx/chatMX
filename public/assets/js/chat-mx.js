@@ -398,6 +398,7 @@ let sendMessage = props=>{
 	interact.origem = "to"
 	//buble(interact)
 	//sendRequestMessage(interact)
+	lido();
     socket.emit('chat msg', JSON.stringify(interact));
     _("title").innerText= `chatMX`
 }
