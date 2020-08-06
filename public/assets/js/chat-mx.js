@@ -13,6 +13,34 @@
 // chat-mx.js
 
 chatMX ={}
+chatMX.hadle = true;
+
+// Configura o nome da propriedade hidden e o evento de mudança para visibilidade
+var hidden, visibilityChange; 
+if (typeof document.hidden !== "undefined") { // Suporte para Opera 12.10 e Firefox 18 em diante 
+	hidden = "hidden";
+	visibilityChange = "visibilitychange";
+} else if (typeof document.mozHidden !== "undefined") {
+	hidden = "mozHidden";
+	visibilityChange = "mozvisibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+	hidden = "msHidden";
+	visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+	hidden = "webkitHidden";
+	visibilityChange = "webkitvisibilitychange";
+} 
+
+// Se a página está escondida, não notifica visualização
+// Se a página está visível, não notifica visualização
+function handleVisibilityChange() {
+  	if (document[hidden]) {
+    	chatMX.hadle = false;
+  	} else {
+    	chatMX.hadle = true;
+  	}
+}
+
 
 var session_id = -1
 let create = elem =>{
@@ -390,8 +418,9 @@ let digitAction = props=>{
 	socket.emit('digiting', JSON.stringify({session:session_id,digit:props.digit}));
 }
 
-let lido = ()=>{	
-	socket.emit('read', JSON.stringify({session:session_id,lido:true}));
+let lido = ()=>{
+	if(chatMX.hadle)
+		socket.emit('read', JSON.stringify({session:session_id,lido:true}));
 }
 
 let initUser =()=>{
