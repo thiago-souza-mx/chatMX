@@ -443,7 +443,7 @@ function handleVisibilityChange() {
 		lido();
   	}
 	
-	console.log(chatMx.handle);
+	console.log(chatMX.handle);
 }
 
 document.addEventListener(visibilityChange, handleVisibilityChange, false);
