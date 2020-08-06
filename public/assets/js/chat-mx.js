@@ -419,6 +419,7 @@ let digitAction = props=>{
 }
 
 let lido = ()=>{
+	handleVisibilityChange();
 	if(chatMX.hadle)
 		socket.emit('read', JSON.stringify({session:session_id,lido:true}));
 }
