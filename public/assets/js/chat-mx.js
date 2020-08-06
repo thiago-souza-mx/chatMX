@@ -40,7 +40,7 @@ function handleVisibilityChange() {
     	chatMX.hadle = true;
   	}
 }
-
+document.addEventListener(visibilityChange, handleVisibilityChange, false);
 
 var session_id = -1
 let create = elem =>{
@@ -419,7 +419,7 @@ let digitAction = props=>{
 }
 
 let lido = ()=>{
-	handleVisibilityChange();
+	//handleVisibilityChange();
 	if(chatMX.hadle)
 		socket.emit('read', JSON.stringify({session:session_id,lido:true}));
 }
